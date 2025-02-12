@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de IP y Ubicación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .info span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Información de IP y Ubicación</h1>
+        <div class="info">
+            <p><span>IP del Usuario:</span> <span id="ip">Cargando...</span></p>
+            <p><span>Ubicación:</span> <span id="location">Cargando...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Realizar una solicitud a la API ipinfo.io
+        fetch('https://ipinfo.io/json?token=af19d623fef5f9') // Usa tu token personal de ipinfo.io
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar la IP y la ubicación
+                document.getElementById("ip").textContent = data.ip;
+                document.getElementById("location").textContent = `${data.city}, ${data.region}, ${data.country}`;
+            })
+            .catch(error => {
+                document.getElementById("ip").textContent = "No se pudo obtener la IP";
+                document.getElementById("location").textContent = "No se pudo obtener la ubicación";
+            });
+    </script>
+
+</body>
+</html>
