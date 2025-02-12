@@ -1,7 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Animada</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a202c;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+    </style>
+</head>
 <body>
-<h1>laquetecuento</h1>
-<p>bueno pues un poquito de la que te cuento o como es que va la vaina</p>
+    <h1 id="animated-text"></h1>
+    <script>
+        const text = "Bueno, ¿un poquito de la que te cuento o cómo es que va la vaina? O la que te cuente que en estos tiempos ya no se sabe jajajjajaj";
+        let index = 0;
+        
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById("animated-text").textContent += text[index];
+                index++;
+                setTimeout(typeText, 50);
+            }
+        }
+        
+        window.onload = function() {
+            gsap.from("#animated-text", { opacity: 0, y: -20, duration: 1 });
+            typeText();
+        };
+    </script>
 </body>
 </html>
