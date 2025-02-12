@@ -7,25 +7,97 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            padding: 15px;
+            color: white;
             text-align: center;
-            margin: 50px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .video-container {
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         #contenido {
             display: none;
             margin-top: 20px;
+            background-color: #fff;
             padding: 20px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        input[type="password"] {
+            padding: 10px;
+            width: 250px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 20px;
+            }
+            input[type="password"] {
+                width: 200px;
+            }
+            video {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>Ingresa la contraseña para ver el contenido</h2>
-    <input type="password" id="password" placeholder="Introduce la contraseña">
-    <button onclick="verificarPassword()">Log in</button>
-    
-    <div id="contenido">
-        <video src="2smrmemes.mp4"></video>
+    <header>
+        <h1>laqueteencripto</h1>
+    </header>
+
+    <div class="container">
+        <div class="login-container">
+            <h2>Ingresa la contraseña para ver el contenido</h2>
+            <input type="password" id="password" placeholder="Introduce la contraseña">
+            <button onclick="verificarPassword()">Log in</button>
+        </div>
+
+        <div id="contenido" class="video-container">
+            <video controls>
+                <source src="2smrmemes.mp4" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            </video>
+        </div>
     </div>
 
     <script>
