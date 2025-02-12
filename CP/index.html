@@ -12,6 +12,7 @@
             text-align: center;
             margin: 0;
             padding: 20px;
+            display: flex;
         }
         .container {
             background-color: #333;
@@ -20,14 +21,15 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 800px;
-            margin: 0 auto;
+            margin:  auto;
         }
         h1 {
             color: #fff;
         }
         .info {
-            margin-top: 20px;
+            margin-top: flex;
             font-size: 18px;
+
         }
         .info span {
             font-weight: bold;
@@ -92,6 +94,7 @@
                 document.getElementById("org").textContent = "No se pudo obtener la organización";
                 document.getElementById("postal").textContent = "No se pudo obtener el código postal";
                 document.getElementById("timezone").textContent = "No se pudo obtener la zona horaria";
+                
             });
     </script>
 

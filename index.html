@@ -30,7 +30,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        .btn {
+        .btn  {
             background-color: #4A5568;
             color: white;
             border: none;
@@ -52,7 +52,7 @@
         <a href="https://laquetecuento.es/la_que_te_contare" class="btn" id="btn1">La que te contaré</a>
         <a href="https://laquetecuento.es/la_que_te_contaria" class="btn" id="btn2">La que te contaría</a>
         <a href="https://laquetecuento.es/la_que_te_conte" class="btn" id="btn3">La que te conté</a>
-        <a href="https://laquetecuento.es/cp" class="btn" id="btn3">Ver ClubPenguin gratis</a>
+        <a class="btn" id="btn4">Ver ClubPenguin gratis</a>
     </div>
     <script>
         const text = "Bueno, ¿un poquito de la que te cuento o cómo es que va la vaina? O la que te cuente que en estos tiempos ya no se sabe jajajjajaj";
@@ -78,6 +78,24 @@
             button.addEventListener("mouseleave", () => {
                 gsap.to(button, { scale: 1, duration: 0.2 });
             });
+        });
+
+
+        function isMobile() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        document.getElementById('btn4').addEventListener('click', function() {
+            // URL que se quiere abrir
+            const url = 'https://laquetecuento.es/CP';
+
+            if (isMobile()) {
+                // Para dispositivos móviles, abrir en una nueva pestaña
+                window.open(url, '_blank');
+            } else {
+                // Para escritorio, abrir en una nueva ventana
+                window.open(url, '_blank', 'width=400,height=445');
+            }
         });
     </script>
 </body>
