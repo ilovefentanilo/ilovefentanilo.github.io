@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,18 +20,28 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            position: relative; /* Se agregó para posicionar el botón de "stick" */
         }
+
         h1 {
             font-size: 2rem;
             margin-bottom: 20px;
         }
+
+        .misco {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
         .button-container {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .btn  {
+
+        .btn {
             background-color: #4A5568;
             color: white;
             border: none;
@@ -41,24 +52,30 @@
             transition: background-color 0.3s ease;
             text-decoration: none;
         }
+
         .btn:hover {
             background-color: #2D3748;
         }
     </style>
 </head>
+
 <body>
+    <div class="misco">
+        <a href="https://laquetecuento.es/stick" class="btn" id="btn5">stick</a>
+    </div>
+
     <h1 id="animated-text"></h1>
     <div class="button-container">
         <a href="https://laquetecuento.es/la_que_te_contare" class="btn" id="btn1">La que te contaré</a>
         <a href="https://laquetecuento.es/la_que_te_contaria" class="btn" id="btn2">La que te contaría</a>
         <a href="https://laquetecuento.es/la_que_te_conte" class="btn" id="btn3">La que te conté</a>
         <a class="btn" id="btn4">Ver ClubPenguin gratis</a>
-        <a href="https://laquetecuento.es/stick" class="btn" id="btn5">stick</a>
     </div>
+
     <script>
         const text = "Bueno, ¿un poquito de la que te cuento o cómo es que va la vaina? O la que te cuente que en estos tiempos ya no se sabe jajajjajaj";
         let index = 0;
-        
+
         function typeText() {
             if (index < text.length) {
                 document.getElementById("animated-text").textContent += text[index];
@@ -66,8 +83,8 @@
                 setTimeout(typeText, 20);
             }
         }
-        
-        window.onload = function() {
+
+        window.onload = function () {
             gsap.from("#animated-text", { opacity: 0, y: -20, duration: 0.1 });
             typeText();
         };
@@ -86,7 +103,7 @@
             return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         }
 
-        document.getElementById('btn4').addEventListener('click', function() {
+        document.getElementById('btn4').addEventListener('click', function () {
             // URL que se quiere abrir
             const url = 'https://laquetecuento.es/CP';
 
@@ -100,4 +117,5 @@
         });
     </script>
 </body>
+
 </html>
