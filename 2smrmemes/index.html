@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laqueteencripto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #contenido {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ingresa la contraseña para ver el contenido</h2>
+    <input type="password" id="password" placeholder="Introduce la contraseña">
+    <button onclick="verificarPassword()">Log in</button>
+    
+    <div id="contenido">
+        <video src="2smrmemes.mp4"></video>
+    </div>
+
+    <script>
+        function verificarPassword() {
+            var password = document.getElementById("password").value;
+            var claveCorrecta = "misco"; 
+            
+            if (password === claveCorrecta) {
+                document.getElementById("contenido").style.display = "block";
+            } else {
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        }
+    </script>
+</body>
+</html>
