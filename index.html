@@ -9,6 +9,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
@@ -21,11 +22,37 @@
         }
         h1 {
             font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            background-color: #4A5568;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #2D3748;
         }
     </style>
 </head>
 <body>
     <h1 id="animated-text"></h1>
+    <div class="button-container">
+        <a href="https://laquetecuento.es/la_que_te_contare" class="btn" id="btn1">La que te contaré</a>
+        <a href="https://laquetecuento.es/la_que_te_contaria" class="btn" id="btn2">La que te contaría</a>
+        <a href="https://laquetecuento.es/la_que_te_conte" class="btn" id="btn3">La que te conté</a>
+    </div>
     <script>
         const text = "Bueno, ¿un poquito de la que te cuento o cómo es que va la vaina? O la que te cuente que en estos tiempos ya no se sabe jajajjajaj";
         let index = 0;
@@ -42,6 +69,15 @@
             gsap.from("#animated-text", { opacity: 0, y: -20, duration: 1 });
             typeText();
         };
+
+        document.querySelectorAll(".btn").forEach(button => {
+            button.addEventListener("mouseenter", () => {
+                gsap.to(button, { scale: 1.1, duration: 0.2 });
+            });
+            button.addEventListener("mouseleave", () => {
+                gsap.to(button, { scale: 1, duration: 0.2 });
+            });
+        });
     </script>
 </body>
 </html>
