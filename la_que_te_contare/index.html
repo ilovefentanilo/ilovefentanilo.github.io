@@ -1,7 +1,60 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <style>
+        body {
+            background-image: url('image/fn.jpg');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1, p {
+            color: white;
+            font-size: 400%;
+            font-family: "Comic Sans MS";
+        }
+
+        .responsive-img {
+            width: 50%; /* Aumentado del 40% al 50% */
+            height: 50%; /* Aumentado del 40% al 50% */
+        }
+
+        img {
+            width: 90%;
+            height: 50%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 45%;
+            width: 90%;
+            justify-content: center;
+        }
+    </style>
+</head>
+
 <body>
-<h1>laquetecontare</h1>
-<p>esto es lo que te cuento sabes pero dentro de un rato por eso esta en futuro</p>
+    <h1>laquetecontare</h1>
+    <p>esto es lo que te cuento sabes pero dentro de un rato por eso esta en futuro</p>
+    <div class="container">
+        <div class="responsive-img">
+            <img src="image/boxfight.jpg">
+        </div>
+        <div class="responsive-img">
+            <img src="image/laquetecuento.jpg">
+        </div>
+    </div>
 </body>
+
 </html>
