@@ -7,39 +7,61 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #000;
+            color: #fff;
             text-align: center;
+            margin: 0;
             padding: 20px;
         }
         .container {
-            background-color: #fff;
+            background-color: #333;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         h1 {
-            color: #333;
+            color: #fff;
         }
         .info {
             margin-top: 20px;
             font-size: 18px;
-            color: #333;
         }
         .info span {
             font-weight: bold;
+        }
+        .info p {
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+            .info {
+                font-size: 16px;
+            }
+            .container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Información de IP y Ubicación</h1>
+        <h1>ure done nigga</h1>
         <div class="info">
-            <p><span>IP del Usuario:</span> <span id="ip">Cargando...</span></p>
-            <p><span>Ubicación:</span> <span id="location">Cargando...</span></p>
+            <p><span>IP:</span> <span id="ip">Cargando...</span></p>
+            <p><span>Hostname:</span> <span id="hostname">Cargando...</span></p>
+            <p><span>Ciudad:</span> <span id="city">Cargando...</span></p>
+            <p><span>Región:</span> <span id="region">Cargando...</span></p>
+            <p><span>País:</span> <span id="country">Cargando...</span></p>
+            <p><span>Coordenadas (Latitud, Longitud):</span> <span id="loc">Cargando...</span></p>
+            <p><span>Organización:</span> <span id="org">Cargando...</span></p>
+            <p><span>Código Postal:</span> <span id="postal">Cargando...</span></p>
+            <p><span>Zona Horaria:</span> <span id="timezone">Cargando...</span></p>
         </div>
     </div>
 
@@ -48,13 +70,28 @@
         fetch('https://ipinfo.io/json?token=af19d623fef5f9') // Usa tu token personal de ipinfo.io
             .then(response => response.json())
             .then(data => {
-                // Mostrar la IP y la ubicación
+                // Mostrar los datos obtenidos
                 document.getElementById("ip").textContent = data.ip;
-                document.getElementById("location").textContent = `${data.city}, ${data.region}, ${data.country}`;
+                document.getElementById("hostname").textContent = data.hostname;
+                document.getElementById("city").textContent = data.city;
+                document.getElementById("region").textContent = data.region;
+                document.getElementById("country").textContent = data.country;
+                document.getElementById("loc").textContent = data.loc;
+                document.getElementById("org").textContent = data.org;
+                document.getElementById("postal").textContent = data.postal;
+                document.getElementById("timezone").textContent = data.timezone;
             })
             .catch(error => {
+                // En caso de error, mostrar mensaje de fallo
                 document.getElementById("ip").textContent = "No se pudo obtener la IP";
-                document.getElementById("location").textContent = "No se pudo obtener la ubicación";
+                document.getElementById("hostname").textContent = "No se pudo obtener el hostname";
+                document.getElementById("city").textContent = "No se pudo obtener la ciudad";
+                document.getElementById("region").textContent = "No se pudo obtener la región";
+                document.getElementById("country").textContent = "No se pudo obtener el país";
+                document.getElementById("loc").textContent = "No se pudo obtener las coordenadas";
+                document.getElementById("org").textContent = "No se pudo obtener la organización";
+                document.getElementById("postal").textContent = "No se pudo obtener el código postal";
+                document.getElementById("timezone").textContent = "No se pudo obtener la zona horaria";
             });
     </script>
 
