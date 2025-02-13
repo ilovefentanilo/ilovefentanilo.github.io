@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laquetecuento</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 24px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 580px;
+            height: 44px;
+            padding: 0 12px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons button {
+            margin: 0 4px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="image/lagrasa.jpg" alt="Logo" width="272" height="92">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Buscar en laquetebusco">
+        </div>
+        <div class="buttons">
+            <button id="btn1">Buscar con laquetebusco</button>
+            <button id="btn2">Voy a tener suerte</button>
+        </div>
+    </div>
+    <script>
+        // Definir la función isMobile()
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        document.getElementById('btn1').addEventListener('click', function () {
+            // URL que se quiere abrir
+            const url = 'image/buscar.mp4';
+
+            if (isMobile()) {
+                // Para dispositivos móviles, abrir en una nueva pestaña
+                window.open(url, '_blank');
+            } else {
+                // Para escritorio, abrir en una nueva ventana
+                window.open(url, '_blank', 'width=1920,height=1080');
+            }
+        });
+
+        document.getElementById('btn2').addEventListener('click', function () {
+            // URL que se quiere abrir
+            const url = 'image/suerte.mp4';
+
+            if (isMobile()) {
+                // Para dispositivos móviles, abrir en una nueva pestaña
+                window.open(url, '_blank');
+            } else {
+                // Para escritorio, abrir en una nueva ventana
+                window.open(url, '_blank', 'width=1920,height=1080');
+            }
+        });
+    </script>
+</body>
+
+</html>
