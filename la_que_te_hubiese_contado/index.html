@@ -17,9 +17,16 @@
             text-align: center;
             font-family: "Comic Sans MS";
             color: red;
+            background-color: rgb(255, 0, 170);
         }
 
-
+        #reloj {
+            font-size: 10vw;
+            /* Adjust the size based on viewport width */
+            text-align: center;
+            color: white;
+            font-family: "Comic Sans MS", sans-serif;
+        }
 
         .billar {
             width: 100%;
@@ -35,27 +42,111 @@
         .header {
             background-image: url('image/bg.jpg');
             background-size: 100% 100%;
-            /* Esto hará que la imagen se estire */
             background-position: center;
-            /* Centra la imagen */
             background-repeat: no-repeat;
-            /* Evita que la imagen se repita */
             text-align: center;
             padding: 20px;
+        }
+
+        #reloj {
+            background-image: url('image/caballo.gif');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #movable-button {
+            width: 100px;
+            height: 40px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            position: absolute;
+            transition: transform 0.2s;
+        }
+
+        /* Estilo para el área de movimiento */
+        #button-container {
+            width: 100%;
+            height: calc(100% - 150px);
+            position: relative;
+            overflow: hidden;
+            background-image: url('image/porfin.jpg');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <h1>sabes que la que te hubiese contado se convertiria en la que te cuento, pero no, por que es la que te
-            hubiese contado</h1>
-        <h2>laquetecuento.es - este espacio esta patrocinado por <a
-                href="https://www.1001juegos.com/juego/8-ball-pool-billiards-multiplayer">billar.com</a></h2>
+        <h1>sabes que la que te hubiese contado se convertiria en la que te cuento, pero no, por que es la que te hubiese contado</h1>
+        <h2>laquetecuento.es - este espacio está patrocinado por <a href="https://www.1001juegos.com/juego/8-ball-pool-billiards-multiplayer">billar.com</a></h2>
     </div>
     <div class="billar">
-        <iframe src="https://billar.com"></iframe>
+        <div id="reloj"></div>
     </div>
+    <div id="button-container">
+        <div id="movable-button">moro</div>
+    </div>
+    <script>
+        function mostrarHora() {
+            var horaActual = new Date();
+            var hora = horaActual.getHours();
+            var minutos = horaActual.getMinutes();
+            var segundos = horaActual.getSeconds();
+            var horaEspana = hora + ":" + (minutos < 10 ? "0" : "") + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+            document.getElementById("reloj").innerHTML = horaEspana;
+        }
+
+        // Actualizar la hora cada segundo
+        setInterval(mostrarHora, 1000);
+
+        const button = document.getElementById('movable-button');
+        const container = document.getElementById('button-container');
+
+        // Función para mover el botón a una posición aleatoria
+        function moveButton() {
+            const maxX = container.clientWidth - button.clientWidth;
+            const maxY = container.clientHeight - button.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        // Agregar un evento para mover el botón cuando el cursor está encima
+        button.addEventListener('mouseenter', moveButton);
+
+        // Agregar un evento para redirigir a una página web cuando se hace clic en el botón
+        button.addEventListener('click', function () {
+            window.location.href = 'https://es.wikipedia.org/wiki/Selecci%C3%B3n_de_f%C3%BAtbol_del_Per%C3%BA'; // Reemplaza con la URL que desees
+        });
+
+        // Redirigir a filezilla-project.org al hacer clic en cualquier parte de la página
+        document.body.addEventListener('click', function () {
+            window.location.href = 'https://filezilla-project.org';
+        });
+    </script>
 </body>
 
 </html>
