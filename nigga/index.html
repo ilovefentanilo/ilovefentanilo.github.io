@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducir Audio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: filter 0.3s ease;
+        }
+
+        .background img {
+            width: 33.33%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;  /* Este valor asegura que el contenido esté debajo del pop-up */
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            transition: filter 0.3s ease;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            z-index: 1000;  /* Asegura que el pop-up esté por encima de los otros elementos */
+        }
+
+        .popup-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .popup button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .popup button:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+
+        #btnSi {
+            background: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        #btnNo {
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+
+        #cooldown {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: red;
+        }
+
+        button {
+            font-size: 24px;
+            border: none;
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        .blurred {
+            filter: blur(5px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <img src="img/1.png" alt="Imagen 1">
+        <img src="img/2.png" alt="Imagen 2">
+        <img src="img/3.png" alt="Imagen 3">
+    </div>
+
+    <div class="content">
+        <audio id="miAudio">
+            <source src="audio/nigger.mp3" type="audio/mpeg">
+        </audio>
+        <button id="botonAudio" onclick="toggleAudio()" disabled>🔇</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>¿Estás streameando?</h2>
+            <p>Cuidado streamers, hay contenido baneable en esta página. Si estás en stream, selecciona Sí para quitar todo el contenido baneable.</p>
+            <p id="cooldown">Espera 5 segundos...</p>
+            <button id="btnSi" onclick="restrictAudio()" disabled>Sí, no mostrar contenido baneable</button>
+            <button id="btnNo" onclick="closePopup()" disabled>No, mostrar página completa</button>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('miAudio');
+        const boton = document.getElementById('botonAudio');
+        const popup = document.getElementById('popup');
+        const btnSi = document.getElementById('btnSi');
+        const btnNo = document.getElementById('btnNo');
+        const cooldownText = document.getElementById('cooldown');
+        const content = document.querySelector('.content');
+        const background = document.querySelector('.background');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                boton.textContent = '🔊';
+            } else {
+                audio.pause();
+                boton.textContent = '🔇';
+            }
+        }
+
+        function restrictAudio() {
+            boton.disabled = true;
+            popup.style.display = 'none';
+            content.classList.remove('blurred');
+            background.classList.remove('blurred');
+        }
+
+        function closePopup() {
+            boton.disabled = false;
+            popup.style.display = 'none';
+            content.classList.remove('blurred');
+            background.classList.remove('blurred');
+        }
+
+        // Aplicar desenfoque al contenido mientras el popup está activo
+        document.addEventListener("DOMContentLoaded", () => {
+            content.classList.add('blurred');
+            background.classList.add('blurred');
+        });
+
+        // Contador de cooldown
+        let cooldown = 5;
+        const countdown = setInterval(() => {
+            cooldown--;
+            cooldownText.textContent = `Espera ${cooldown} segundos...`;
+            if (cooldown <= 0) {
+                clearInterval(countdown);
+                cooldownText.textContent = "";
+                btnSi.disabled = false;
+                btnNo.disabled = false;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
