@@ -1,0 +1,43 @@
+miscojones
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: url('img/popup.png');
+            background-size: 100% 100%;
+            /* Esto hará que la imagen cubra toda la pantalla */
+            background-position: center;
+            /* Centra la imagen */
+            background-repeat: no-repeat;
+            /* Evita que la imagen se repita */
+            margin: 0;
+            /* Elimina el margen predeterminado */
+            height: 100vh;
+            /* Asegura que el body ocupe todo el alto de la pantalla */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.body.addEventListener('click', function () {
+            // Crear un enlace temporal
+            let a = document.createElement('a');
+            a.href = 'img/fentanyl.mp4'; // Ruta del video
+            a.download = 'fentanyl.mp4'; // Nombre del archivo al descargar
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+    
+</body>
+
+</html>
