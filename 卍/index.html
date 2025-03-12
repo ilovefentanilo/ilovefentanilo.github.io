@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卍卍卍卍卍卍卍卍卍卍</title>
+    <style>
+        body {
+          background-image: url('img/xd.png');
+          background-size: 100% 100%; /* Esto hará que la imagen cubra toda la pantalla */
+          background-position: center; /* Centra la imagen */
+          background-repeat: no-repeat; /* Evita que la imagen se repita */
+          margin: 0; /* Elimina el margen predeterminado */
+          height: 100vh; /* Asegura que el body ocupe todo el alto de la pantalla */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-size: 24px;
+            border: none;
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <audio id="miAudio" src="sound.mp3"></audio>
+        <button id="botonAudio" onclick="toggleAudio()">🔇</button>
+    </div>
+    
+    <script>
+        const audio = document.getElementById('miAudio');
+        const boton = document.getElementById('botonAudio');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                boton.textContent = '🔊';
+            } else {
+                audio.pause();
+                boton.textContent = '🔇';
+            }
+        }
+    </script>
+</body>
+
+</html>
