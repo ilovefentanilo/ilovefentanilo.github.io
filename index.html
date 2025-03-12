@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>la que te cuento</title>
+    <link rel="icon" href="img/logo.jpg" type="image/png">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="La Que Te Cuento">
+    <meta property="og:description" content="Bueno ya va siendo hora de un poco de la que te cuento">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://laquetecuento.es">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="La Que Te Cuento">
+    <meta name="twitter:description" content="Bueno ya va siendo hora de un poco de la que te cuento">
+    <meta name="twitter:image" content="img/logo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
@@ -21,7 +34,6 @@
             text-align: center;
             padding: 20px;
             position: relative;
-            /* Se agregó para posicionar el botón de "stick" */
         }
 
         h1 {
@@ -67,6 +79,15 @@
             padding: 2px 6px;
             border-radius: 4px;
             margin-left: 6px;
+        }#btn9::after {
+            content: "FIXED";
+            color: rgb(255, 255, 255);
+            background-color: rgb(76, 127, 255);
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
         }
     </style>
 </head>
@@ -82,7 +103,7 @@
         <a href="https://laquetecuento.es/la_que_te_contaria" class="btn" id="btn2">La que te contaría</a>
         <a href="https://laquetecuento.es/la_que_te_conte" class="btn" id="btn3">La que te conté</a>
         <a href="https://laquetecuento.es/la_que_te_hubiese_contado" class="btn" id="btn7">La que te hubiese contado</a>
-        <a href="https://laquetecuento.es/la_que_te_conataba" class="btn" id="btn9">La que te contaba</a>
+        <a href="https://laquetecuento.es/la_que_te_contaba" class="btn" id="btn9">La que te contaba</a>
         <a href="https://laquetecuento.es/la_que_te_busco" class="btn" id="btn10">La que te voy buscando</a>
         <a class="btn" id="btn4">Ver ClubPenguin gratis</a>
         <a href="https://laquetecuento.es/que_mal" class="btn" id="btn4">QUE MAL TODO 😤😡😠😾💢🗯️</a>
@@ -91,7 +112,6 @@
         <a href="https://laquetecuento.es/freeRobux" class="btn" id="btn8">FREE ROBUX🤑🤑🤑🤑🤑🤑</a>
         <a href="https://laquetecuento.es/bocata-lomo-ya" class="btn" id="btn99">bocata lomo ya</a>
         <a href="https://laquetecuento.es/nigga" class="btn" id="btn99">nigga</a>
-
     </div>
 
     <script>
@@ -119,7 +139,6 @@
                 gsap.to(button, { scale: 1, duration: 0.2 });
             });
         });
-
 
         function isMobile() {
             return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
